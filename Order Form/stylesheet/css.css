@@ -1,0 +1,53 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0
+
+}
+
+body{
+	background-image: url('../images/bg.jpeg');
+	background-color: lightblue;
+	font-family: 'Ranga', cursive;
+	background-size: cover;
+	  background-attachment: fixed;
+	      background-position: center center;
+
+
+
+}
+
+
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;
+      margin: auto;
+  }
+
+
+#welcome{
+	font-family: 'Ranga', cursive;	
+	color:  #00804d;
+	letter-spacing:2px;
+	margin-top: 50px;
+
+
+	font-size: 2.3em;
+	margin-left: 1%;
+
+
+}
+
+#welcome a{
+}
+
+
+
+
+.clearfix{
+	clear: both;
+}
+
+

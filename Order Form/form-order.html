@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Guides</title>
+	<meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet\style.css">
+
+</head>
+
+<body onload="startform()">
+
+
+<div class="container margin-up">
+    <div class=" col-md-8  col-md-offset-2">
+    <form name="order" method="post" action="mailto:sshrestha@caldwell.edu" onsubmit="return checkform()" >
+
+<div class="col-md-offset-9 col-md-3 col-sm-offset-9 col-sm-3 col-xs-offset-5 col-xs-7">
+    <div class="form-group">
+        <input id="date" name="formdate" class="form-control numbers" readonly>
+</div>
+    </div>
+
+      <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title ">Select Product</h4>
+        </div>
+
+        <div class="panel-body">
+<div class="form-group">
+
+<div class="row">
+
+<div class="col-md-6">
+<label >Products</label>
+<select  class="form-control" name="product" onchange="order_price()">
+
+<option value="0">Entertainment Guides</option>
+<option value="10.00">Simple Guide.($10.00)</option>
+<option value="15.00">Guide with maps.($15.00)</option>
+
+</select>
+
+</div>
+<!--Quantity of Order-->
+<div class="col-md-3">
+
+<label class="control-label">Quantity</label>
+
+
+
+		<select class="form-control" name="qty" onchange="order_price()">
+			<option>0</option>
+														<option>1</option>
+
+														<option>2</option>
+														<option>3</option>
+
+														<option>4</option>
+
+														<option>5</option>
+
+														<option>6</option>
+
+														<option>7</option>
+
+														<option>8</option>
+
+														<option>9</option>
+
+														<option>10</option>
+
+
+													</select>
+
+</div>
+
+
+<!--Price of selected item x quantity ordered -->
+<div class="col-md-3">
+
+
+<label class="control-label">Amount</label>
+ <div class="input-group">
+         <span class="input-group-addon">$</span>
+
+    <input type="number" name="sub1" value="0.00" class="form-control " readonly>
+
+  </div>
+</div>
+</div>
+
+<!--Tax applied to the order-->
+
+<div class="row">
+<div class="col-md-offset-9 col-md-3">
+
+	<label class="control-label">Tax Amount(6%)</label>
+	<div class="input-group">
+
+	         <span class="input-group-addon">$</span>
+
+    <input type="number" name="sub2" class="form-control" value="0.00" readonly>
+
+  </div>
+	
+
+</div>
+
+
+	
+</div>
+
+<!--Method of Shipping -->
+
+<div class="row">
+<div class="col-md-12">
+
+
+<label class="control-label"> Select Shipping Method</label>
+
+<div class="radio">
+<label class="radio-inline">
+<input type="radio" name="shipping" value="8.00" onclick="shipping_price(this)">
+
+Standard (3-5 days): $8.00 
+</label>
+
+<label class="radio-inline">
+
+<input type="radio" name="shipping" value="10.00" onclick="shipping_price(this)">Express (2 days): $10.00
+	</label>
+
+<label class="radio-inline">
+
+<input type="radio" name="shipping" value="11.99" onclick="shipping_price(this)"> Next Day (1 day) : $11.99</label>
+</div>
+</div>
+
+</div>
+<div class="row">
+
+<div class="col-md-offset-9 col-md-3">
+
+<div class="input-group" style="display:none;" >
+
+<span class="input-group-addon">$</span>
+<input type="number"  class="form-control" name="sub3" value="0.00" readonly >
+</div>
+</div>
+</div>
+
+
+
+
+<!--Total Cost of Order (Product Cost + Tax + Shipping) -->
+
+
+<div class="row">
+	<div class="col-md-offset-9 col-md-3">
+
+<label class="control-label">Total</label>
+	<div class="input-group">
+
+	         <span class="input-group-addon"  >$</span>
+
+    <input type="number" name="total" class="form-control" value="0.00" readonly>
+
+	</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</div>
+
+<!--Shipping Address-->
+
+ <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title ">Shipping Address</h4>
+        </div>
+
+        <div class="panel-body">
+        <div class="form-group">
+        <div class="row">
+        <div class="col-md-6">
+        <label class="control-label">Name</label>
+        
+        <input type="text" name="sname"  class="form-control" placeholder="Ex:Tom Hanks">
+
+        	
+        </div>
+
+        <div class="col-md-6">
+        <label class="control-label">Street</label>
+
+       	<textarea rows="3" cols="40" class="form-control no-resize" name="sstreet"></textarea>
+
+        	
+        </div>
+        	
+        </div>
+
+        <div class="row">
+        <div class="col-md-6">
+        <label class="control-label">City</label>
+        <input type="text" class="form-control" name="scity">
+
+        </div>
+        <div class="col-md-3">
+        <label class="control-label">State</label>
+        <select class="form-control" name="sstate">
+														<option>AL<option>AK<option>AZ<option>AR<option>CA<option>CO<option>CT<option>DE<option>DC
+															<option>FL<option>GA<option>HI<option>ID<option>IL<option>IN<option>IA<option>KS<option>KY
+																<option>LA<option>ME<option>MD<option>MA<option>MI<option>MN<option>MS<option>MO<option>MT
+																	<option>NE<option>NV<option>NH<option>NJ<option>NM<option>NY<option>NC<option>ND<option>OH
+																		<option>OK<option>OR<option>PA<option>RI<option>SC<option>SD<option>TN<option>TX<option>UT
+																			<option>VT<option>VA<option>WA<option>WV<option>WI<option>WY
+
+																			</select>
+        	
+        </div>
+
+        <div class="col-md-3">
+        <label class="control-label">Zip Code</label>
+        <input type="text" class="form-control" name="szip">
+
+        </div>
+
+
+
+        </div>
+
+        </div>
+        </div>
+        </div>
+
+
+
+        <!--Billing Address-->
+
+ <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title ">Billing Address</h4>
+        </div>
+
+        <div class="panel-body">
+        <div class="form-group">
+        <div class="row">
+
+        <div class="col-md-6">
+  <label class="checkbox-inline">
+    <input type="checkbox" name="billcb" onclick="copy_shipping()">Same as Shipping Address
+  </label>
+
+</div>
+
+           <div class="col-md-6">
+    
+<label class="checkbox-inline">
+        <input type="checkbox" name="creditcb" onclick="use_credit()">Bill me to my credit card's billing address.
+</label>
+</div>
+        </div>
+        </div>
+
+
+        <div class="row">
+        <div class="col-md-6">
+        <label class="control-label">Name</label>
+        
+        <input type="text" name="bname"  class="form-control" placeholder="Ex: Tom Hanks">
+
+        	
+        </div>
+
+        <div class="col-md-6">
+        <label class="control-label">Street</label>
+
+       	<textarea rows="3" cols="40" class="form-control no-resize" name="bstreet"></textarea>
+
+        	
+        </div>
+        	
+        </div>
+
+        <div class="row">
+        <div class="col-md-6">
+        <label class="control-label">City</label>
+        <input name="bcity" class="form-control" >
+
+      
+
+
+        </div>
+
+        <div class="col-md-3">
+        <label class="control-label">State</label>
+        <select class="form-control" name="bstate">
+														<option>AL<option>AK<option>AZ<option>AR<option>CA<option>CO<option>CT<option>DE<option>DC
+															<option>FL<option>GA<option>HI<option>ID<option>IL<option>IN<option>IA<option>KS<option>KY
+																<option>LA<option>ME<option>MD<option>MA<option>MI<option>MN<option>MS<option>MO<option>MT
+																	<option>NE<option>NV<option>NH<option>NJ<option>NM<option>NY<option>NC<option>ND<option>OH
+																		<option>OK<option>OR<option>PA<option>RI<option>SC<option>SD<option>TN<option>TX<option>UT
+																			<option>VT<option>VA<option>WA<option>WV<option>WI<option>WY
+
+																			</select>
+        	
+        </div>
+
+        <div class="col-md-3">
+        <label class="control-label">Zip Code</label>
+        <input type="text" class="form-control" name="bzip">
+
+        </div>
+
+</div>
+
+        </div>
+
+        </div>
+
+
+        <!--Payment/ Credit Card Details-->
+         <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title ">Credit Card Details</h4>
+        </div>
+
+        <div class="panel-body">
+        <div class="form-group">
+       
+        </div>
+
+
+
+        <div class="row">
+        <div class="col-md-6">
+        <label class="control-label">Name</label>
+        
+        <input type="text" name="cname"  class="form-control" >
+
+        	
+        </div>
+
+         <div class="col-md-6">
+        <label class="control-label">Card Number</label>
+        
+     
+        <input type="password" name="cnumber"  class="form-control">
+  
+
+
+        </div>
+
+
+
+        	
+        </div>
+
+
+
+        <div class="row">
+        <div class="col-md-6">
+
+
+         
+                   <label class="control-label"> Select Card Type</label>
+
+
+         <div class="radio">
+
+<label class="radio-inline">
+        <input type="radio" name="ccard" value="ae"> <img src="images\amex.png">
+</label>
+
+    
+<label class="radio-inline">
+        <input type="radio" name="ccard" value="mc"> <img src="images\master.png">
+</label>
+
+    
+<label class="radio-inline">
+        <input type="radio" name="ccard" value="visa"> <img src="images\visa.png">
+</label>
+
+    
+<label class="radio-inline">
+        <input type="radio" name="ccard" value="di"> <img src="images\discover.png">
+</label>
+</div>
+
+</div>
+      
+ <div class="col-md-6">
+
+
+
+        <label class="control-label">Expiration Date</label>
+
+     
+
+       <div class="row">
+
+<div class="col-md-6">
+
+<select name="expmonth" class="form-control">
+	<option>01</option>
+	<option>02</option>
+						<option>03</option>
+						<option>04</option>
+						<option>05</option>
+						<option>06</option>
+						<option>07</option>
+						<option>08</option>
+						<option>09</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+</select>
+
+</div>
+
+
+<div class="col-md-6">
+
+	<select name="expyear" class="form-control">
+							<option>2014</option>
+							<option>2015</option>
+							<option>2016</option>
+							<option>2017</option>
+							<option>2018</option>
+							<option>2019</option>
+							<option>2020</option>
+							<option>2021</option>
+							<option>2022</option>
+							<option>2023</option>
+
+
+
+					</select>
+					</div>
+					</div>
+					</div>
+					</div>
+
+					</div>
+</div>
+
+	<button type="submit" value="submit" class="btn btn-primary btn btn-block btn-success">Submit</button>
+    <input type="reset" class="btn btn-primary btn-md btn-block margin-dn btn-danger" value="Cancel">
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
+
+        </div>
+
+
+
+        
+
+</form>
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script  type="text/javascript">
+	function todaytxt(){
+				var today = new Date();
+				return today.getMonth()+1+"/"+today.getDate()+"/"+today.getFullYear();
+			}
+
+
+			function startform(){
+				document.order.formdate.value=todaytxt();
+				document.order.product.focus();
+			}
+
+			function dollars(n){
+				n=eval(n);
+				n=Math.round(n*100)/100;
+				return (n == Math.round(n)) ? n+=".00" : (n*10 == Math.round(n*10)) ? n+="0" : n;
+			}
+
+			function total_price(){
+				s1=eval(document.order.sub1.value);
+				s2=eval(document.order.sub2.value);
+				s3=eval(document.order.sub3.value);
+				document.order.total.value=dollars(s1+s2+s3);
+			}
+
+			function order_price(){
+				item_index=document.order.product.selectedIndex;
+				item_value=document.order.product.options[item_index].value;
+				qty_ordered=document.order.qty.selectedIndex;
+				document.order.sub1.value=dollars(item_value*qty_ordered);
+				document.order.sub2.value=dollars(item_value*qty_ordered*0.06);
+				total_price();
+			}
+
+			function shipping_price(field){
+				document.order.sub3.value=dollars(field.value);
+				total_price();
+			}
+
+
+			function showForm(){
+				document.getElementById("pup-up-order").style.display="block";
+
+			}
+
+			function hideform(){
+				document.getElementById("pup-up-order").style.display="none";	
+			}
+
+			function checkform() {
+				product_ok=true;
+				if (document.order.sub1.value == "0.00") product_ok=false;
+				if (document.order.sub2.value == "0.00") product_ok=false;
+				if (document.order.sub3.value == "0.00") product_ok=false;
+
+				shipping_ok=true;
+				if (document.order.sname.value == "") shipping_ok=false;
+				if (document.order.sstreet.value == "") shipping_ok=false;
+				if (document.order.scity.value == "") shipping_ok=false;
+				if (document.order.szip.value == "") shipping_ok=false;
+
+
+
+					billing_ok=true;
+				if (document.order.bname.value == "") billing_ok=false;
+				if (document.order.bstreet.value == "") billing_ok=false;
+				if (document.order.bcity.value == "") billing_ok=false;
+				if (document.order.bzip.value == "") billing_ok=false;
+				if(document.order.creditcb.checked) billing_ok = true;
+
+
+				credit_ok=true;
+				if(document.order.cname.value == "") credit_ok = false;
+				if(document.order.cnumber.value == "") credit_ok = false;
+				if(document.order.ccard.value == "") credit_ok = false;
+
+				
+
+				payment_ok = (credit_ok && billing_ok);
+
+				form_ok = (product_ok && shipping_ok && payment_ok);
+
+
+
+				if (form_ok) {
+					alert("Your order has been submitted");
+				} else {
+					if (product_ok==false ) alert("Select a product, quantity, and shipping method!");
+					if (shipping_ok==false) alert("Enter shipping address!");
+
+					if (billing_ok==false) alert("Enter billing address!");
+					if (credit_ok==false) alert("Enter payment details!");
+
+
+
+				}
+
+				return form_ok;
+			} 
+
+			function copy_shipping() {
+				if (document.order.billcb.checked) {
+					document.order.bname.value=document.order.sname.value;
+					document.order.bstreet.value=document.order.sstreet.value;
+					document.order.bstate.selectedIndex=document.order.sstate.selectedIndex;
+					document.order.bzip.value=document.order.szip.value;
+					document.order.bcity.value=document.order.scity.value;
+				
+				}
+			}
+
+
+</script>
+
+</body>
+</html>
